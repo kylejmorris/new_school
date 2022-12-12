@@ -37,7 +37,7 @@ def conversation_loop():
     summarize_research_opps()
     summarize_topics()
     print(response)
-    print("\n\n")
+    print("\n")
 
 def fetch_learning_resources(topics):
     topics = ["How to sleep better", "how sleep recovers brain cells"]
@@ -85,8 +85,4 @@ def interview():
 interview()
 
 while True:
-    conversation_loop()
-    conversation_loop()
-    conversation_loop()
-    conversation_loop()
     conversation_loop()
