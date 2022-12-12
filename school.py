@@ -10,7 +10,7 @@ study_resources = []
 
 def call_otherside(message):
     global CONVERSATION_ID
-    headers = {"Authorization":"953cb18c44514eb0b94bf0d1422871cfbb47c7c2d98c498595823dc780226572741308caf303480d9b8b59bc2d43da05b5d86acb8f874fb9b6393f2c36f1450f"}
+    headers = {"Authorization":""}
 
     data = {
         'payload':json.dumps({'message': message, 'chatId': str(CONVERSATION_ID)})
