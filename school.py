@@ -1,10 +1,12 @@
 import json
 import requests
 import uuid
+from youtubesearchpython import VideosSearch
 
 CONVERSATION_ID = uuid.uuid4()
 topics = []
 research_opportunities = []
+study_resources = []
 
 def call_otherside(message):
     global CONVERSATION_ID
@@ -37,12 +39,27 @@ def conversation_loop():
     print(response)
     print("\n\n")
 
+def fetch_learning_resources(topics):
+    topics = ["How to sleep better", "how sleep recovers brain cells"]
+    for topic in topics:
+        videosSearch = VideosSearch(topic, limit = 1)
+        for res in videosSearch.result()['result']:
+            print(res.get("title", "") + " | " + res.get("link", ""))
+            study_resources.append({"title": res.get("title", ""), "link": res.get("link","")})
+
+def find_mentors():
+    for topic in topics:
+        res = call_otherside("I want to learn more about the topic of " + topic + ". What query should I write in Linkedin search to find a mentor who specialize and work in this topic?")
+        print("Query for topic: " + topic + " is: " + res)
+
 def conversation_loop():
     line = input()
 
     if line == "summarize":
         summarize_research_opps()
         summarize_topics()
+        fetch_learning_resources()
+        find_mentors()
         return
 
     response = call_otherside(line)
@@ -51,12 +68,10 @@ def conversation_loop():
 
 # blocker: how to partition conversation into chunks to get context, without overlapping topics
 def interview():
-    """
-        age = input("How old are you?")
-        name = input("What's your name?")
-        education = input("What is your highest level of education?") 
-        specialty = input("What are your occupations/specialties?")
-    """
+    age = input("How old are you?")
+    name = input("What's your name?")
+    education = input("What is your highest level of education?") 
+    specialty = input("What are your occupations/specialties?")
 
     age = 26
     name = "kyle"
