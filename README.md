@@ -9,3 +9,5 @@ Afterwards it'll
 - suggest related videos to consume
 - soon: find mentors on linkedin for career opportunities 
 
+# here's an example with ChatGPT (waiting for API access to automate it, for now using HyperWrite)
+https://morriscode.notion.site/Why-do-humans-sleep-545ec6db4650406cacb451febc13f6f0
